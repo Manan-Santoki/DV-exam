@@ -13,228 +13,227 @@ const ExamQuestions = () => {
     setShowAnswers(prev => ({...prev, [questionId]: !prev[questionId]}));
   };
 
-  const sampleExamSection = {
-    title: "Practice Exam: Sample Questions",
-    questions: [
-      {
-        id: "sample1",
-        question: "1. Why use external representation?",
-        type: "multiple-choice",
-        options: [
-          "(a) It allows us to surpass the limitations of our own internal cognition",
-          "(b) It allows us to encode visual representations of data",
-          "(c) It lets us confirm that the visualization provides insight",
-          "(d) It allows us to understand the requirements of a problem"
-        ],
-        answer: "(a) It allows us to surpass the limitations of our own internal cognition",
-        explanation: "External representations offload mental work (cognition) to our perceptual system, helping us overcome the limits of our memory and processing power. This is a core reason visualization works."
-      },
-      {
-        id: "sample2",
-        question: "2. Which of the following are abstractions/levels in the nested model of visualization design and evaluation? (Select all that apply)",
-        type: "multiple-select",
-        options: [
-          "(a) Domain",
-          "(b) Visualization",
-          "(c) Data",
-          "(d) Attribute",
-          "(e) Task",
-          "(f) Idiom",
-          "(g) Interface",
-          "(h) Algorithm"
-        ],
-        answer: "(a) Domain, (c) Data, (e) Task, (f) Idiom, (h) Algorithm",
-        explanation: "The nested model consists of four main levels: Domain situation, Data/Task abstraction, Idiom (visual encoding/interaction), and Algorithm. Data and Task are often considered together at the abstraction level."
-      },
-      {
-        id: "sample3",
-        question: "3. In the nested design model, what is the idiom abstraction?",
-        type: "multiple-choice",
-        options: [
-          "(a) It is how you create the visualization's interactions",
-          "(b) It is the approach to generating the requirements of a problem",
-          "(c) It is the way you identify the data statistics",
-          "(d) It is how you create and manipulate the visual representations of the data"
-        ],
-        answer: "(d) It is how you create and manipulate the visual representations of the data",
-        explanation: "The idiom is the 'how' of the visualization design. It specifies the visual encoding (marks and channels) and the interaction techniques used to represent and manipulate the data."
-      },
-      {
-        id: "sample4",
-        question: "4. What are the 'semantics' of a dataset?",
-        type: "multiple-choice",
-        options: [
-          "(a) The real-world meaning of the data attributes",
-          "(b) The position of the data attributes in an array",
-          "(c) The numeric meaning of the data attributes",
-          "(d) The numeric representation of the data attributes"
-        ],
-        answer: "(a) The real-world meaning of the data attributes",
-        explanation: "Semantics refers to what the data actually means in a real-world context (e.g., this column of numbers represents 'temperature in Celsius' or 'price in USD')."
-      },
-      {
-        id: "sample5",
-        question: "5. What does it mean to 'derive data'?",
-        type: "multiple-choice",
-        options: [
-          "(a) To import new data",
-          "(b) The addition of graphical (or textual) annotations",
-          "(c) To save or capture visualization elements as persistent artifacts",
-          "(d) To produce new data elements based on existing data elements"
-        ],
-        answer: "(d) To produce new data elements based on existing data elements",
-        explanation: "Deriving data is transforming or computing new attributes from the original data. For example, calculating an 'average' from a list of numbers or a 'profit' column from 'revenue' and 'cost' columns."
-      },
-      {
-        id: "sample6",
-        question: "6. The effectiveness of a data visualization can be impacted by: (Select all that apply)",
-        type: "multiple-select",
-        options: [
-          "(a) Choosing appropriate visual encodings for the data and task",
-          "(b) Choosing appropriate task(s) for the target users",
-          "(c) Choosing appropriate interactions for your interface modality"
-        ],
-        answer: "(a), (b), (c)",
-        explanation: "Effectiveness is a holistic measure. It depends on the entire pipeline: having the right task for the user, and then choosing the right visual encodings and interactions to support that task."
-      },
-      {
-        id: "sample7",
-        question: "7. Matching the channel type to the data type is an example of:",
-        type: "multiple-choice",
-        options: [
-          "(a) External representation",
-          "(b) The effectiveness principle",
-          "(c) The expressiveness principle",
-          "(d) Marks and channels"
-        ],
-        answer: "(c) The expressiveness principle",
-        explanation: "The expressiveness principle states that the visual encoding should express all of, and only, the information in the data. This includes matching the channel properties (e.g., ordered vs. categorical) to the data attribute properties."
-      },
-      {
-        id: "sample8",
-        question: "8. For the choropleth map of US unemployment, select the marks and channels in the visualization. (Circle all that apply)",
-        type: "multiple-select",
-        options: [
-          "mark: point",
-          "mark: line",
-          "mark: area",
-          "channels: x and y position",
-          "channel: color luminance",
-          "channel: color hue"
-        ],
-        answer: "mark: area, channels: x and y position, and channel: color luminance",
-        explanation: "Each state is an 'area' mark. Its position is given by its geography. The unemployment rate (an ordered, quantitative attribute) is encoded using color luminance (light to dark blue)."
-      },
-      {
-        id: "sample9",
-        question: "9. For the scatterplot of sepal width vs. sepal length, select the marks and channels. (Select all that apply)",
-        type: "multiple-select",
-        options: [
-          "mark: point",
-          "mark: line",
-          "mark: area",
-          "channels: x and y position",
-          "channel: size",
-          "channel: shape",
-          "channel: color luminance",
-          "channel: color hue"
-        ],
-        answer: "mark: point, channels: x and y position, channel: shape, and channel: color hue",
-        explanation: "Each data item is a 'point' mark. Sepal length and width are encoded by x and y position. The species (a categorical attribute) is encoded using both color hue (blue, orange, green) and shape (circle, plus, diamond)."
-      },
-      {
-        id: "sample10",
-        question: "10. What is a glyph?",
-        type: "multiple-choice",
-        options: [
-          "(a) A combination of a mark and channels",
-          "(b) A composite mark made up of multiple marks",
-          "(c) Showing a data point as a single 'unit', like in small multiples",
-          "(d) Combining multiple data points together"
-        ],
-        answer: "(b) A composite mark made up of multiple marks",
-        explanation: "A glyph is a complex mark composed of multiple simpler marks. For example, a single stacked bar in a stacked bar chart can be considered a glyph made up of several line or area segments."
-      },
-      {
-        id: "sample11",
-        question: "11. What is one advantage, and one disadvantage of using animation in a visualization? (Short answer)",
-        type: "short-answer",
-        answer: "Advantage: It's intuitive and good for showing overall trends/patterns. Disadvantage: Changes can be hard to track precisely, and it relies on the user's memory ('Eyes over memory!') to compare non-adjacent states.",
-        explanation: "Animation is engaging but often less effective for precise analytical comparisons than static alternatives like small multiples."
-      },
-      {
-        id: "sample12",
-        question: "12. What is the visual information seeking mantra?",
-        type: "short-answer",
-        answer: "Overview first, zoom and filter, then details on demand.",
-        explanation: "This is a famous design principle by Ben Shneiderman that guides the creation of effective exploratory visualization interfaces."
-      },
-      {
-        id: "sample13",
-        question: "13. How many keys are shown in a scatter plot?",
-        type: "multiple-choice",
-        options: [
-          "(a) Zero",
-          "(b) One",
-          "(c) Two",
-          "(d) Three"
-        ],
-        answer: "(a) Zero",
-        explanation: "A standard scatterplot visualizes only values (two quantitative attributes). There is no key attribute that uniquely identifies each point's mark, unlike a bar chart where the category is the key."
-      },
-      {
-        id: "sample14",
-        question: "14. A progress bar providing feedback about a long operation would be an example of:",
-        type: "multiple-choice",
-        options: [
-          "(a) Overview+detail",
-          "(b) Linked highlighting",
-          "(c) User interface",
-          "(d) Responsive design"
-        ],
-        answer: "(d) Responsive design",
-        explanation: "Responsive design is about providing appropriate system feedback for every user action. A progress bar is the appropriate feedback for a multi-second or longer operation to show the system is working."
-      },
-      {
-        id: "sample15",
-        question: "15. For the provided car dataset: <br>15.1: What is the dataset type? Is it streaming or static?<br>15.2: What is the attribute type and scale/cardinality for each of the four attributes?",
-        type: "short-answer",
-        answer: "15.1: Tabular, Static. <br>15.2: car: type = categorical, cardinality = 9. <br>color: type = categorical, cardinality = 7. <br>Year: type = ordered, quantitative, sequential, cardinality/scale = ~19. <br>MPG: type = ordered, ordinal, sequential, cardinality/scale = 4 (Excellent, Good, Average, Bad).",
-        explanation: "This tests your ability to perform a basic data abstraction on a simple tabular dataset."
-      },
-      {
-        id: "sample16",
-        question: "16. The earliest data visualizations belonged to:",
-        type: "multiple-choice",
-        options: [
-          "(a) Diagrams of the flow of trade within and between empires",
-          "(b) Statistical graphs of tabular data",
-          "(c) Plotting proto-algorithms in Ancient Babylonia",
-          "(d) Cartography and map making"
-        ],
-        answer: "(d) Cartography and map making",
-        explanation: "As described in Friendly's history, the earliest roots of visualization are found in map making for navigation and astronomical charts for plotting celestial positions."
-      },
-      {
-        id: "sample17",
-        question: "17. In 2-3 paragraphs, briefly summarize or describe two of the historical epochs of data visualization as described in Friendly’s A Brief History of Data Visualization.",
-        type: "short-answer",
-        answer: "You should be able to name and write about two of the epochs described in the Friendly paper. Describing the epoch at a high level is okay, but you should be confident that you know what you are writing about to receive full points. (See 'Reading 2' section for detailed examples like 'The Golden Age' vs. 'The Modern Dark Ages').",
-        explanation: "This question tests your understanding of the major periods and themes in the history of data visualization."
-      },
-      {
-        id: "sample18",
-        question: "18. For storytelling with visualizations, a designer can balance between 'author driven' vs. 'reader driven' stories. Discuss some of the tradeoffs and benefits/drawbacks between these approaches.",
-        type: "short-answer",
-        answer: "Author-driven stories (linear, heavy messaging, low interactivity) are great for communicating a specific message clearly to a broad audience, but they limit exploration. Reader-driven stories (no prescribed order, free interactivity) are powerful for expert users who want to discover their own insights but can be overwhelming for novices and may fail to communicate a specific point.",
-        explanation: "This question requires you to synthesize content from the storytelling lecture, specifically the slide showing the spectrum from author-driven to reader-driven structures."
-      }
-    ]
-  };
-
   const readings = [
-    // === READING 1 ===
-    sampleExamSection,
+    // === SAMPLE EXAM SECTION ===
+    {
+      title: "Practice Exam: Sample Questions",
+      questions: [
+        {
+          id: "sample1",
+          question: "1. Why use external representation?",
+          type: "multiple-choice",
+          options: [
+            "(a) It allows us to surpass the limitations of our own internal cognition",
+            "(b) It allows us to encode visual representations of data",
+            "(c) It lets us confirm that the visualization provides insight",
+            "(d) It allows us to understand the requirements of a problem"
+          ],
+          answer: "(a) It allows us to surpass the limitations of our own internal cognition",
+          explanation: "External representations offload mental work (cognition) to our perceptual system, helping us overcome the limits of our memory and processing power. This is a core reason visualization works."
+        },
+        {
+          id: "sample2",
+          question: "2. Which of the following are abstractions/levels in the nested model of visualization design and evaluation? (Select all that apply)",
+          type: "multiple-select",
+          options: [
+            "(a) Domain",
+            "(b) Visualization",
+            "(c) Data",
+            "(d) Attribute",
+            "(e) Task",
+            "(f) Idiom",
+            "(g) Interface",
+            "(h) Algorithm"
+          ],
+          answer: "(a) Domain, (c) Data, (e) Task, (f) Idiom, (h) Algorithm",
+          explanation: "The nested model consists of four main levels: Domain situation, Data/Task abstraction, Idiom (visual encoding/interaction), and Algorithm. Data and Task are often considered together at the abstraction level."
+        },
+        {
+          id: "sample3",
+          question: "3. In the nested design model, what is the idiom abstraction?",
+          type: "multiple-choice",
+          options: [
+            "(a) It is how you create the visualization's interactions",
+            "(b) It is the approach to generating the requirements of a problem",
+            "(c) It is the way you identify the data statistics",
+            "(d) It is how you create and manipulate the visual representations of the data"
+          ],
+          answer: "(d) It is how you create and manipulate the visual representations of the data",
+          explanation: "The idiom is the 'how' of the visualization design. It specifies the visual encoding (marks and channels) and the interaction techniques used to represent and manipulate the data."
+        },
+        {
+          id: "sample4",
+          question: "4. What are the 'semantics' of a dataset?",
+          type: "multiple-choice",
+          options: [
+            "(a) The real-world meaning of the data attributes",
+            "(b) The position of the data attributes in an array",
+            "(c) The numeric meaning of the data attributes",
+            "(d) The numeric representation of the data attributes"
+          ],
+          answer: "(a) The real-world meaning of the data attributes",
+          explanation: "Semantics refers to what the data actually means in a real-world context (e.g., this column of numbers represents 'temperature in Celsius' or 'price in USD')."
+        },
+        {
+          id: "sample5",
+          question: "5. What does it mean to 'derive data'?",
+          type: "multiple-choice",
+          options: [
+            "(a) To import new data",
+            "(b) The addition of graphical (or textual) annotations",
+            "(c) To save or capture visualization elements as persistent artifacts",
+            "(d) To produce new data elements based on existing data elements"
+          ],
+          answer: "(d) To produce new data elements based on existing data elements",
+          explanation: "Deriving data is transforming or computing new attributes from the original data. For example, calculating an 'average' from a list of numbers or a 'profit' column from 'revenue' and 'cost' columns."
+        },
+        {
+          id: "sample6",
+          question: "6. The effectiveness of a data visualization can be impacted by: (Select all that apply)",
+          type: "multiple-select",
+          options: [
+            "(a) Choosing appropriate visual encodings for the data and task",
+            "(b) Choosing appropriate task(s) for the target users",
+            "(c) Choosing appropriate interactions for your interface modality"
+          ],
+          answer: "(a), (b), (c)",
+          explanation: "Effectiveness is a holistic measure. It depends on the entire pipeline: having the right task for the user, and then choosing the right visual encodings and interactions to support that task."
+        },
+        {
+          id: "sample7",
+          question: "7. Matching the channel type to the data type is an example of:",
+          type: "multiple-choice",
+          options: [
+            "(a) External representation",
+            "(b) The effectiveness principle",
+            "(c) The expressiveness principle",
+            "(d) Marks and channels"
+          ],
+          answer: "(c) The expressiveness principle",
+          explanation: "The expressiveness principle states that the visual encoding should express all of, and only, the information in the data. This includes matching the channel properties (e.g., ordered vs. categorical) to the data attribute properties."
+        },
+        {
+          id: "sample8",
+          question: "8. For the choropleth map of US unemployment, select the marks and channels in the visualization. (Circle all that apply)",
+          type: "multiple-select",
+          options: [
+            "mark: point",
+            "mark: line",
+            "mark: area",
+            "channels: x and y position",
+            "channel: color luminance",
+            "channel: color hue"
+          ],
+          answer: "mark: area, channels: x and y position, and channel: color luminance",
+          explanation: "Each state is an 'area' mark. Its position is given by its geography. The unemployment rate (an ordered, quantitative attribute) is encoded using color luminance (light to dark blue)."
+        },
+        {
+          id: "sample9",
+          question: "9. For the scatterplot of sepal width vs. sepal length, select the marks and channels. (Select all that apply)",
+          type: "multiple-select",
+          options: [
+            "mark: point",
+            "mark: line",
+            "mark: area",
+            "channels: x and y position",
+            "channel: size",
+            "channel: shape",
+            "channel: color luminance",
+            "channel: color hue"
+          ],
+          answer: "mark: point, channels: x and y position, channel: shape, and channel: color hue",
+          explanation: "Each data item is a 'point' mark. Sepal length and width are encoded by x and y position. The species (a categorical attribute) is encoded using both color hue (blue, orange, green) and shape (circle, plus, diamond)."
+        },
+        {
+          id: "sample10",
+          question: "10. What is a glyph?",
+          type: "multiple-choice",
+          options: [
+            "(a) A combination of a mark and channels",
+            "(b) A composite mark made up of multiple marks",
+            "(c) Showing a data point as a single 'unit', like in small multiples",
+            "(d) Combining multiple data points together"
+          ],
+          answer: "(b) A composite mark made up of multiple marks",
+          explanation: "A glyph is a complex mark composed of multiple simpler marks. For example, a single stacked bar in a stacked bar chart can be considered a glyph made up of several line or area segments."
+        },
+        {
+          id: "sample11",
+          question: "11. What is one advantage, and one disadvantage of using animation in a visualization? (Short answer)",
+          type: "short-answer",
+          answer: "Advantage: It's intuitive and good for showing overall trends/patterns. Disadvantage: Changes can be hard to track precisely, and it relies on the user's memory ('Eyes over memory!') to compare non-adjacent states.",
+          explanation: "Animation is engaging but often less effective for precise analytical comparisons than static alternatives like small multiples."
+        },
+        {
+          id: "sample12",
+          question: "12. What is the visual information seeking mantra?",
+          type: "short-answer",
+          answer: "Overview first, zoom and filter, then details on demand.",
+          explanation: "This is a famous design principle by Ben Shneiderman that guides the creation of effective exploratory visualization interfaces."
+        },
+        {
+          id: "sample13",
+          question: "13. How many keys are shown in a scatter plot?",
+          type: "multiple-choice",
+          options: [
+            "(a) Zero",
+            "(b) One",
+            "(c) Two",
+            "(d) Three"
+          ],
+          answer: "(a) Zero",
+          explanation: "A standard scatterplot visualizes only values (two quantitative attributes). There is no key attribute that uniquely identifies each point's mark, unlike a bar chart where the category is the key."
+        },
+        {
+          id: "sample14",
+          question: "14. A progress bar providing feedback about a long operation would be an example of:",
+          type: "multiple-choice",
+          options: [
+            "(a) Overview+detail",
+            "(b) Linked highlighting",
+            "(c) User interface",
+            "(d) Responsive design"
+          ],
+          answer: "(d) Responsive design",
+          explanation: "Responsive design is about providing appropriate system feedback for every user action. A progress bar is the appropriate feedback for a multi-second or longer operation to show the system is working."
+        },
+        {
+          id: "sample15",
+          question: "15. For the provided car dataset: <br>15.1: What is the dataset type? Is it streaming or static?<br>15.2: What is the attribute type and scale/cardinality for each of the four attributes?",
+          type: "short-answer",
+          answer: "15.1: Tabular, Static. <br>15.2: car: type = categorical, cardinality = 9. <br>color: type = categorical, cardinality = 7. <br>Year: type = ordered, quantitative, sequential, cardinality/scale = 19 (from 1997 to 2016). <br>MPG: type = ordered, ordinal, sequential, cardinality/scale = 4 (Excellent, Good, Average, Bad).",
+          explanation: "This tests your ability to perform a basic data abstraction on a simple tabular dataset."
+        },
+        {
+          id: "sample16",
+          question: "16. The earliest data visualizations belonged to:",
+          type: "multiple-choice",
+          options: [
+            "(a) Diagrams of the flow of trade within and between empires",
+            "(b) Statistical graphs of tabular data",
+            "(c) Plotting proto-algorithms in Ancient Babylonia",
+            "(d) Cartography and map making"
+          ],
+          answer: "(d) Cartography and map making",
+          explanation: "As described in Friendly's history, the earliest roots of visualization are found in map making for navigation and astronomical charts for plotting celestial positions."
+        },
+        {
+          id: "sample17",
+          question: "17. In 2-3 paragraphs, briefly summarize or describe two of the historical epochs of data visualization as described in Friendly’s A Brief History of Data Visualization.",
+          type: "short-answer",
+          answer: "One major epoch is the **'Golden Age of Statistical Graphics' (1850-1900)**. This period saw an explosion of innovation and exquisitely crafted visualizations. It was fueled by the establishment of official state statistical offices, which provided large, rich datasets on topics like population, trade, and social issues ('moral statistics'). Key figures like Charles Joseph Minard created masterpieces such as his flow map of Napoleon's Russian campaign, and governments like France and the U.S. produced comprehensive statistical atlases. These works combined multiple graphic forms, used color effectively, and demonstrated a sophisticated understanding of how to communicate complex information visually.<br><br>Another contrasting epoch is the **'Modern Dark Ages' (1900-1950)**. During this time, the enthusiasm for visualization waned significantly within the statistical community. The focus shifted towards quantification and the development of formal, mathematical models that prized numerical precision. Visualizations were often seen as mere 'pictures'—pretty, but not suitable for rigorous analysis. While graphical methods became more standardized and appeared in textbooks and business, there were very few new graphical inventions or innovations. This period represented a dormancy in creativity, which was only broken by the 'rebirth' of visualization led by figures like John W. Tukey in the post-1950 era.",
+          explanation: "This question tests your understanding of the major periods and themes in the history of data visualization. A good answer will name the epochs and describe their key characteristics and drivers."
+        },
+        {
+          id: "sample18",
+          question: "18. For storytelling with visualizations, a designer can balance between 'author driven' vs. 'reader driven' stories. Discuss some of the tradeoffs and benefits/drawbacks between these approaches.",
+          type: "short-answer",
+          answer: "**Author-driven** stories offer a linear narrative with heavy messaging and low interactivity. The main benefit is that they can communicate a specific, clear message to a broad audience effectively, ensuring the main point is not missed. The primary drawback is the lack of user agency; it prevents exploration and discovery of other potential insights in the data.<br><br>**Reader-driven** stories have no prescribed order and offer free interactivity. Their benefit is empowerment; they are excellent for expert users who want to perform their own analysis and discover their own insights. The main drawback is that they can be overwhelming for novice users, who may not know where to start. Furthermore, without guidance, the key message intended by the author can be easily missed.",
+          explanation: "This question requires you to synthesize content from the storytelling lecture, specifically the slide showing the spectrum from author-driven (like a slideshow) to reader-driven (like a drill-down dashboard) structures."
+        }
+      ]
+    },
+    // The rest of the sections follow, with complete answers as requested...
     {
       title: "Reading 1: Visualization Rhetoric by Hullman & Diakopoulos",
       questions: [
@@ -506,7 +505,7 @@ const ExamQuestions = () => {
             id: "hist8",
             question: "In 2-3 paragraphs, briefly summarize or describe two historical epochs of data visualization as described in Friendly’s paper.",
             type: "short-answer",
-            answer: "Example Answer: The 'Golden Age' (1850-1900) was a period of great innovation and beauty in statistical graphics. It was driven by the establishment of official state statistical offices, providing rich social and economic data. This era saw the creation of masterpieces like Charles Minard's flow maps and the extensive statistical atlases produced by governments like France and the U.S., which used a wide variety of advanced graphical techniques to present a 'graphic portrait of the nation.' In contrast, the 'Modern Dark Ages' (1900-1950) was a period of relative stagnation in visualization innovation. The focus in statistics shifted towards formal, mathematical models and numerical precision. Graphics were seen as mere illustrations, not tools for analysis. While graphical methods became more common in textbooks and commerce, there were few new graphical inventions, as the enthusiasm for visual exploration was replaced by a preference for quantitative rigor.",
+            answer: "Example Answer: The 'Golden Age' (1850-1900) was a period of great innovation and beauty in statistical graphics. It was driven by the establishment of official state statistical offices, providing rich social and economic data. This era saw the creation of masterpieces like Charles Minard's flow maps and the extensive statistical atlases produced by governments like France and the U.S., which used a wide variety of advanced graphical techniques to present a 'graphic portrait of the nation.' In contrast, the 'Modern Dark Ages' (1900-1950) was a period of relative stagnation in visualization innovation. The focus in statistics shifted towards formal, mathematical models and numerical precision. Graphics were seen as mere illustrations, not tools for analysis. While graphical methods became more common in textbooks and commerce, there were few new graphical inventions or innovations. This period represented a dormancy in creativity, which was only broken by the 'rebirth' of visualization led by figures like John W. Tukey in the post-1950 era.",
             explanation: "The student should be able to name and write about two of the epochs, describing the key developments, figures, and overall theme of each period."
           },
           {
